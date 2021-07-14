@@ -65,16 +65,7 @@ class MovementFaker {
 
 $.inviteList = [];
 $.byInviteList = [
-  'H8mphO2sQwmkfoqbFdAzueiSH4g3',
-  'H8mphKz4BE78YIaYFtxci1tsIdE',
-  'H8mphLbwLg-jKIHIQtA10dokJA3OJ42r',
-  'H8mphO2hQQKhd4qYFdMwuftwYZyH',
-  'H8mphLbwLgyrftCTHtIw1ofKAnZ_Cugu',
-  'H8mphLbwLm7HLerMUJF5otsFwOgMh_0',
-  'H8mphL-lRAygd4qSEtQw1xY2LJw',
-  'H8mphLbwLg-netDLRIc0hJrN6KzRHDan',
-  'H8mphO-lQgmgfYOdHsk60-FXXTp1lune',
-  'H8mphDosydwN2crGW5h_1Q'
+
 ];
 let uuid = 8888;
 let cookiesArr = [];
