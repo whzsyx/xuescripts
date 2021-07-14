@@ -83,7 +83,7 @@ const UA = $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT :
   // 助力
   let res = [], res2 = [];
   $.innerShInviteList = await getAuthorShareCode('https://mirror.ghproxy.com/https://github.com/whzsyx/updateTeam/tree/main/shareCodes/summer_movement_one.json');
-  res2 = await getAuthorShareCode('https://raw.githubusercontent.com/smiek2221/updateTeam/master/shareCodes/summer_movement.json');
+  res2 = await getAuthorShareCode('https://mirror.ghproxy.com/https://github.com/whzsyx/updateTeam/tree/main/shareCodes/summer_movement.json');
   if(!$.innerShInviteList[0]){
     $.innerShInviteList = await getAuthorShareCode('https://mirror.ghproxy.com/https://github.com/whzsyx/updateTeam/tree/main/shareCodes/summer_movement.json');
   }
