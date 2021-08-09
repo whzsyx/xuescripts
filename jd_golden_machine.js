@@ -25,9 +25,9 @@ $.authorCode = '';
         return;
     }
     let res = [];
-    try{res = await getAuthorShareCode('');}catch (e) {}
+    try{res = await getAuthorShareCode('https://raw.githubusercontent.com/whzsyx/updateTeam/main/shareCodes/goldPhone.json');}catch (e) {}
     if(!res){
-        try{res = await getAuthorShareCode('');}catch (e) {}
+        try{res = await getAuthorShareCode('https://raw.githubusercontent.com/whzsyx/updateTeam/main/shareCodes/goldPhone.json');}catch (e) {}
         if(!res){res = [];}
     }
     if(res && res.length > 0){
