@@ -1,7 +1,7 @@
 /*
-京东手机狂欢城活动，每日可获得20+以上京豆（其中20京豆是往期奖励，需第一天参加活动后，第二天才能拿到）
+京东手机狂欢城活动
 活动时间: 2021-8-9至2021-8-28
-活动入口：暂无 [活动地址](https://carnivalcity.m.jd.com/#/home?shareId=ddd345fb-57bb-4ece-968b-7bf4c92be7cc&t=1628481509175)
+活动入口：暂无 [活动地址](https://carnivalcity.m.jd.com)
 
 往期奖励：
 a、第1名可获得实物手机一部
@@ -62,7 +62,7 @@ let nowTime = new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*
     return
   }
   await updateShareCodesCDN();
-  // await requireConfig();
+  await requireConfig();
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
@@ -368,7 +368,6 @@ function indexInfo(flag = false) {
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
-          console.log(data)
           data = $.toObj(data);
           if (data.code === 200) {
             $.hotProductList = data['data']['hotProductList'];
@@ -420,7 +419,6 @@ function lottery() {
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
-          console.log(data)
           data = JSON.parse(data);
           if (data.code === 200) {
             if (data.data.prizeId !== 8) {
@@ -706,7 +704,7 @@ function getListRank() {
   })
 }
 
-function updateShareCodesCDN(url = 'https://cdn.jsdelivr.net/gh/smiek2221/updateTeam@master/shareCodes/jd_cityShareCodes.json') {
+function updateShareCodesCDN(url = 'https://raw.githubusercontent.com/whzsyx/updateTeam/main/shareCodes/jd_cityShareCodes.json') {
   return new Promise(resolve => {
     $.get({url , headers:{"User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1")}, timeout: 200000}, async (err, resp, data) => {
       try {
@@ -728,7 +726,7 @@ function updateShareCodesCDN(url = 'https://cdn.jsdelivr.net/gh/smiek2221/update
 function readShareCode() {
   console.log(`开始`)
   return new Promise(async resolve => {
-    $.get({url: `http://share.turinglabs.net/api/v3/carnivalcity/query/20/`, 'timeout': 20000}, (err, resp, data) => {
+    $.get({url: `https://jd.smiek.tk/info_carnivalcity`, 'timeout': 20000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -761,10 +759,10 @@ function shareCodesFormat() {
       $.newShareCodes = inviteCodes[tempIndex] && inviteCodes[tempIndex].split('@') || [];
       if ($.updatePkActivityIdRes && $.updatePkActivityIdRes.length) $.newShareCodes = [...$.updatePkActivityIdRes, ...$.newShareCodes];
     }
-    // const readShareCodeRes = await readShareCode();
-    // if (readShareCodeRes && readShareCodeRes.code === 200) {
-    //   $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
-    // }
+    const readShareCodeRes = await readShareCode();
+    if (readShareCodeRes && readShareCodeRes.code === 200) {
+      $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
+    }
     // console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify($.newShareCodes)}`)
     resolve();
   })
@@ -795,7 +793,6 @@ function requireConfig() {
     resolve()
   })
 }
-
 
 function taskPostUrl(a,t = {}) {
   const body = $.toStr({...t,"apiMapping":`${a}`})
