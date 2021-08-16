@@ -3,30 +3,42 @@
 活动地址：
 http://nm66.top/tfb.jpg
 
-这类阅读文章平台对微信蛮友好，不会出现封号情况，顶多就是限制阅读，休息一段时间就能恢复正常
+微信 支付宝提现秒到
 
-推粉宝中收益都以金币结算，永久满3000金币（3毛）申请微信提现 支付宝满1毛可提现
 
-注意 第一次请手动阅读2次试读再运行脚本
-注意 第一次请手动阅读2次试读再运行脚本
-注意 第一次请手动阅读2次试读再运行脚本
+注意 每天请手动阅读2次试读再运行脚本
+注意 每天请手动阅读2次试读再运行脚本
+注意 每天请手动阅读2次试读再运行脚本
+
+-------------圈X运行-------------
 [rewrite_local]
 
-http://\S+sign/info\Stime=\S+ url script-request-header http://nm66.top/tfb.js
+http://\S+sign/info\Stime=\S+ url script-request-header http://nm66.top/qltfb.js
 
-hostname = api.hijmlvvg.cn
+hostname = api.ayonbnix.cn
 
+-------------青龙或者其他容器运行-------------
+-------------青龙拉取-------------
+ql raw http://nm66.top/qltfb.js
+放配置里 定时如下面
+export tfbhd='{"Cookie":"tfb_msg=抓包的;gfsessionid=抓包的","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.8(0x18000825) NetType/WIFI Language/zh_CN"}'
+手动抓包替换上面2个 放在配置里面 多账号用@隔开
+-------------V2P运行-------------
+直接订阅BOXJX 
+http://nm66.top/nm.boxjs.json
+下载脚本 设置变量tfbhd多账号@隔开或者tfbhd2...
+定时如下面
 */
 
 // [task_local]
 
-// */5 * * * * http://nm66.top/tfb.js, tag=推粉宝阅读, img-url=http://nm66.top/1.jpg, enabled=true
+// */5 9-23 * * * qltfb.js, tag=推粉宝阅读, img-url=http://nm66.top/1.jpg, enabled=true
 
 
 
 
 
-const $ = new Env('推粉宝阅读');
+const $ = new Env('柠檬推粉宝阅读');
 let status;
 status = (status = ($.getval("tfbstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
 let tfbhdArr = [],tfbcount = ''
@@ -51,15 +63,17 @@ var timestamp = Math.round(new Date().getTime()/1000).toString();
           $.index = i + 1;
         
           console.log(`\n开始【推粉宝阅读${$.index}】`)
-     $.log("注意 第一次请手动阅读2次试读再运行脚本\n")
-     $.log("注意 第一次请手动阅读2次试读再运行脚本\n")
-     $.log("注意 第一次请手动阅读2次试读再运行脚本\n")
-     $.log("每日上限阅读看返回的提示\n大概37次后限制半小时阅读\n然后又可以阅读了 上限140次") 
-     $.log("提现金额如果达标 将会自动提现") 
+     $.log("注意 每天请手动阅读2次试读再运行脚本\n")
+     $.log("注意 每天请手动阅读2次试读再运行脚本\n")
+     $.log("注意 每天请手动阅读2次试读再运行脚本\n")
+     //$.log("每日上限阅读看返回的提示\n") 
+     //$.log("提现金额如果达标 将会自动提现") 
      await sign(timestamp)
      await myInfo(signdata)
+     if($.read > 2){
      await sign(timestamp)
      await task(signdata)
+            }else {$.log("请手动前往阅读2次试读再来运行脚本")}
 
   }
 }
@@ -81,16 +95,18 @@ var timestamp = Math.round(new Date().getTime()/1000).toString();
                 tfbhd = tfbhdArr[k]
                 $.index = k + 1;
           console.log(`\n开始【推粉宝阅读${$.index}】`)
-     $.log("注意 第一次请手动阅读2次试读再运行脚本\n")
-     $.log("注意 第一次请手动阅读2次试读再运行脚本\n")
-     $.log("注意 第一次请手动阅读2次试读再运行脚本\n")
-     $.log("每日上限阅读看返回的提示\n大概37次后限制半小时阅读\n然后又可以阅读了 上限140次") 
-     $.log("提现金额如果达标 将会自动提现") 
+     $.log("注意 每天请手动阅读2次试读再运行脚本\n")
+     $.log("注意 每天请手动阅读2次试读再运行脚本\n")
+     $.log("注意 每天请手动阅读2次试读再运行脚本\n")
+    // $.log("每日上限阅读看返回的提示\n") 
+     //$.log("提现金额如果达标 将会自动提现") 
      await sign(timestamp)
      await myInfo(signdata)
+     if($.read > 2){
      await sign(timestamp)
      await task(signdata)
-            }
+            }else {$.log("请手动前往阅读2次试读再来运行脚本")}
+	        }
       }
   }
 })()
@@ -117,7 +133,7 @@ async function myInfo(getsign){
 
 
  let plant6_url = {
-       url: `http://api.hijmlvvg.cn/read/info?time=${timestamp}&sign=${getsign}`,
+       url: `http://api.ayonbnix.cn/read/info?time=${timestamp}&sign=${getsign}`,
         headers: JSON.parse(tfbhd),
        
         
@@ -142,12 +158,12 @@ async function myInfo(getsign){
              
              $.log("可提金额约："+num.toFixed(1))
             if($.remain>=3000){
-            $.log("\n=====开始提现=====")
-             await sign(timestamp)
-             await withdraw(signdata)
-             t = timestamp
-             await txsign(txgold,t)
-             await tx(txgold,t,signdata2)
+            $.log("\n=====因每天提现上限6次 提现请手动=====")
+            // await sign(timestamp)
+            // await withdraw(signdata)
+             //t = timestamp
+             //await txsign(txgold,t)
+             //await tx(txgold,t,signdata2)
              
              
             }
@@ -177,7 +193,7 @@ token = tk.Cookie
 token=token.match(/uid%22%3A(\S+)%7D/)[1]
 
  let plant6_url = {
-       url: `http://api.hijmlvvg.cn/read/task?time=${timestamp}&sign=${getsign}`,
+       url: `http://api.ayonbnix.cn/read/task?time=${timestamp}&sign=${getsign}`,
         headers: JSON.parse(tfbhd),
         
         
@@ -207,7 +223,8 @@ token=token.match(/uid%22%3A(\S+)%7D/)[1]
 } else {
     
    
-       console.log(`\n${result.message}`)
+       console.log(`\n=====${result.message}=====`)
+       return 
 
        
 }
@@ -226,7 +243,7 @@ token=token.match(/uid%22%3A(\S+)%7D/)[1]
 
 
  let plant6_url = {
-       url: `http://api.hijmlvvg.cn/read/jump?sign=${getsign}&time=${$.time}&url=http%3A%2F%2Fmm.uappqro.bar%2Ftask%2Fread%3Fch%3Dzg01%26_t%3D799888`,
+       url: `http://api.ayonbnix.cn/read/jump?sign=${getsign}&time=${$.time}&url=http%3A%2F%2Fmm.uappqro.bar%2Ftask%2Fread%3Fch%3Dzg01%26_t%3D799888`,
         headers: JSON.parse(tfbhd),
        
         
@@ -250,7 +267,7 @@ token=token.match(/uid%22%3A(\S+)%7D/)[1]
 
 
  let plant6_url = {
-       url: `http://api.hijmlvvg.cn/read/finish`,
+       url: `http://api.ayonbnix.cn/read/finish`,
         headers: JSON.parse(tfbhd),
        body: `time=${timestamp}&sign=${getsign}`
         
@@ -403,16 +420,16 @@ tk = JSON.parse(tfbhd)
 token = tk.Cookie
 
  let plant6_url = {
-       url: `http://api.hijmlvvg.cn/withdraw/wechat`,
+       url: `http://api.ayonbnix.cn/withdraw/wechat`,
        body:`gold=${gold}&time=${body}&sign=${getsign}`,
         headers: {
-"Host": "api.hijmlvvg.cn",
+"Host": "api.ayonbnix.cn",
 "Connection": "keep-alive",
 "Accept": "application/json, text/plain, */*",
 "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.8(0x18000825) NetType/WIFI Language/zh_CN",
 "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-"Origin": "http://api.hijmlvvg.cn",
-"Referer": "http://api.hijmlvvg.cn/page",
+"Origin": "http://api.ayonbnix.cn",
+"Referer": "http://api.ayonbnix.cn/page",
 "Accept-Language": "zh-CN,zh;q=0.9",
 "Cookie": token,
         }
@@ -448,16 +465,16 @@ token = tk.Cookie
 
  let plant6_url = {
 
-       url: `http://api.hijmlvvg.cn/withdraw/info?time=${timestamp}&sign=${getsign}`,
+       url: `http://api.ayonbnix.cn/withdraw/info?time=${timestamp}&sign=${getsign}`,
   
         headers: {
-"Host": "api.hijmlvvg.cn",
+"Host": "api.ayonbnix.cn",
 "Connection": "keep-alive",
 "Accept": "application/json, text/plain, */*",
 "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.8(0x18000825) NetType/WIFI Language/zh_CN",
 "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-"Origin": "http://api.hijmlvvg.cn",
-"Referer": "http://api.hijmlvvg.cn/page",
+"Origin": "http://api.ayonbnix.cn",
+"Referer": "http://api.ayonbnix.cn/page",
 "Accept-Language": "zh-CN,zh;q=0.9",
 "Cookie": token,
         }
