@@ -11,8 +11,14 @@ $.authorCodeList = [];
 let cookiesArr = [];
 $.linkID = '';
 let uniqueIdList = [
-    {'id':'L74LC5','name':'肖战','linkID':'P8Iw2eXANcZA4r_ofEDaAQ','taskId':false}
+    {'id':'L74LC5','name':'肖战','linkID':'P8Iw2eXANcZA4r_ofEDaAQ','taskId':false},
+    {'id':'7D2GUG','name':'张艺兴','linkID':'MRyP3a30dDZl5kSccE6B2w','taskId':215},
+    {'id':'3SU8SN','name':'陈小春','linkID':'m2okfVwwfUNLJy8RGsIMTw','taskId':230},
+    {'id':'4T2M7Z','name':'黄征','linkID':'m2okfVwwfUNLJy8RGsIMTw','taskId':230},
+    {'id':'Y5DXN4','name':'张智霖','linkID':'m2okfVwwfUNLJy8RGsIMTw','taskId':230},
+    {'id':'MK9U5L','name':'李承铉','linkID':'m2okfVwwfUNLJy8RGsIMTw','taskId':230},
 ];
+const rewardList = ['P8Iw2eXANcZA4r_ofEDaAQ', 'MRyP3a30dDZl5kSccE6B2w', 'm2okfVwwfUNLJy8RGsIMTw']
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
         cookiesArr.push(jdCookieNode[item])
@@ -48,10 +54,9 @@ if ($.isNode()) {
         }
         await main();
     }
-    return;
-    try{res = await getAuthorShareCode('https://raw.githubusercontent.com/star261/jd/main/code/starShop.json');}catch (e) {}
+    try{res = await getAuthorShareCode('https://raw.githubusercontent.com/whzsyx/updateTeam/main/shareCodes/starShop.json');}catch (e) {}
     if(!res){
-        try{res = await getAuthorShareCode('https://gitee.com/star267/share-code/raw/master/starShop.json');}catch (e) {}
+        try{res = await getAuthorShareCode('https://raw.githubusercontent.com/whzsyx/updateTeam/main/shareCodes/starShop.json');}catch (e) {}
         if(!res){res = [];}
     }
     if(res && res.length > 0){
@@ -110,26 +115,32 @@ async function main() {
     await $.wait(1000);
     $.rewards = [];
     await getReward();
-    for (let i = 0; i < $.rewards.length; i++) {
-        if ($.rewards[i].prizeType === 1) {
-            console.log(`获得优惠券`);
-        } else if ($.rewards[i].prizeType === 6) {
-            console.log(`获得明星照片或者视频`);
-        } else if ($.rewards[i].prizeType === 5) {
-            if(!$.rewards[i].fillReceiverFlag){
-                console.log(`获得实物：${$.rewards[i].prizeDesc || ''},未填写地址`);
-                sendMessage += `【京东账号${$.index}】${$.UserName }，获得实物：${$.rewards[i].prizeDesc || '' }\n`;
-            }else{
-                console.log(`获得实物：${$.rewards[i].prizeDesc || ''},已填写地址`);
+    for (let i = 0; i < rewardList.length; i++) {
+        $.linkID = rewardList[i];
+        $.rewards = [];
+        await getReward();
+        for (let i = 0; i < $.rewards.length; i++) {
+            if ($.rewards[i].prizeType === 1) {
+                console.log(`获得优惠券`);
+            } else if ($.rewards[i].prizeType === 6) {
+                console.log(`获得明星照片或者视频`);
+            } else if ($.rewards[i].prizeType === 5) {
+                if(!$.rewards[i].fillReceiverFlag){
+                    console.log(`获得实物：${$.rewards[i].prizeDesc || ''},未填写地址`);
+                    sendMessage += `【京东账号${$.index}】${$.UserName }，获得实物：${$.rewards[i].prizeDesc || '' }\n`;
+                }else{
+                    console.log(`获得实物：${$.rewards[i].prizeDesc || ''},已填写地址`);
+                }
+            } else if ($.rewards[i].prizeType === 10) {
+                console.log(`获得京豆`);
+            } else {
+                console.log(`获得其他：${$.rewards[i].prizeDesc || ''}`);
             }
-        } else if ($.rewards[i].prizeType === 10) {
-            console.log(`获得京豆`);
-        } else {
-            console.log(`获得其他：${$.rewards[i].prizeDesc || ''}`);
         }
+        await $.wait(2000);
     }
     if(sendMessage){
-        sendMessage += `填写收货地址路径：\n京东首页，搜索明星（肖战），进入明星小店，我的礼物，填写收货地址`;
+        sendMessage += `填写收货地址路径：\n京东首页，搜索明星（肖战,张艺兴或者陈小春），进入明星小店，我的礼物，填写收货地址`;
         await notify.sendNotify(`星店长`, sendMessage);
     }
 }
@@ -152,7 +163,7 @@ async function help(){
         $.get(myRequest, (err, resp, data) => {
             try {
                 try {
-                    console.log(data+'\n');
+                    //console.log(data+'\n');
                 } catch (e) {
                     console.log(`返回异常：${data}`);
                     return;
