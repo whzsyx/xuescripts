@@ -21,11 +21,11 @@ if ($.isNode()) {
         ...$.toObj($.getdata("CookiesJD") || "[]").map((item) => item.cookie)].filter((item) => !!item);
 }
 !(async () => {
-    let res = ['e02732f1b3e84b6e98b4e3a1e00b332e'];
+    let res = ['e02732f1b3e84b6e98b4e3a1e00b332'];
     try{res = await getAuthorShareCode('https://raw.githubusercontent.com/whzsyx/updateTeam/main/shareCodes/xinxiangyin.json');}catch (e) {}
     if(!res){
         try{res = await getAuthorShareCode('https://raw.githubusercontent.com/whzsyx/updateTeam/main/shareCodes/xinxiangyin.json');}catch (e) {}
-        if(!res){res = ['e02732f1b3e84b6e98b4e3a1e00b332e'];}
+        if(!res){res = ['e02732f1b3e84b6e98b4e3a1e00b332'];}
     }
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
@@ -89,7 +89,7 @@ async function main() {
     $.actorUuid = $.activityData.actorUuid;
     console.log(`获取活动详情成功`);
     if(!$.activityData.opencard){
-        if(!$.shareUuid){$.shareUuid = 'e02732f1b3e84b6e98b4e3a1e00b332ere';}
+        if(!$.shareUuid){$.shareUuid = 'd3202be8a8a74fac8b98ae613f75495d';}
         await join($.venderId);
         await $.wait(2000);
         await takePostRequest('activityContent');
@@ -298,7 +298,7 @@ function ruhui(functionId) {
             'accept': '*/*',
             'User-Agent': $.UA,
             'content-type': 'application/x-www-form-urlencoded',
-            'Referer': `https://shopmember.m.jd.com/shopcard/?venderId=${functionId}&shopId=${functionId}&venderType=5&channel=401&returnUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/8796663?activityId=dz210868869301&shareUuid=${$.shareUuid}`,
+            'Referer': `https://shopmember.m.jd.com/shopcard/?venderId=${functionId}&shopId=${functionId}&venderType=5&channel=401&returnUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/832865?activityId=c225ad5922cf4ac8b4a68fd37f486088&shareUuid=${$.shareUuid}`,
             'Cookie': cookie
         }
     }
@@ -313,7 +313,7 @@ function shopactivityId(functionId) {
             'accept': '*/*',
             'User-Agent': $.UA,
             'content-type': 'application/x-www-form-urlencoded',
-            'Referer': `https://shopmember.m.jd.com/shopcard/?venderId=${functionId}&shopId=${functionId}&venderType=5&channel=401&returnUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/xinxiangyin/treasure/activity/8796663?activityId=dz210868869301&shareUuid=${$.shareUuid}`,
+            'Referer': `https://shopmember.m.jd.com/shopcard/?venderId=${functionId}&shopId=${functionId}&venderType=5&channel=401&returnUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/832865?activityId=c225ad5922cf4ac8b4a68fd37f486088&shareUuid=${$.shareUuid}`,
             'Cookie': cookie
         }
     }
