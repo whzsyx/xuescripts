@@ -79,7 +79,7 @@ $.shareuuid = "5e81094ee1d640b2996883b48d0c410a"
                         if (task.taskid == "interact") {
                             for (l = 0; l < 20 - task.curNum; l++) {
                                 await dotask(task.taskid, task.params)
-                                await $.wait(500)
+                                await $.wait(1000)
                             }
                         } else if (task.taskid == "scansku") {
                             await getproduct()
