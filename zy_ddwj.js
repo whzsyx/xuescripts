@@ -155,29 +155,29 @@ async function DoTask(){
     })
    })
   }
-async function unlock(){
- const body = `functionId=funny_raise&body=%7B%22id%22%3A${userUnlockedPlaceNum}%2C%22ss%22%3A%22%7B%5C%22extraData%5C%22%3A%7B%5C%22log%5C%22%3A%5C%22%5C%22%2C%5C%22sceneid%5C%22%3A%5C%22HWJhPageh5%5C%22%7D%2C%5C%22secretp%5C%22%3A%5C%22${secretp}%5C%22%2C%5C%22random%5C%22%3A%5C%2276834380%5C%22%7D%22%7D&client=wh5&clientVersion=1.0.0&uuid=0bcbcdb2a68f16cf9c9ad7c9b944fd141646a849&appid=o2_act`
+//async function unlock(){
+ //const body = `functionId=funny_raise&body=%7B%22id%22%3A${userUnlockedPlaceNum}%2C%22ss%22%3A%22%7B%5C%22extraData%5C%22%3A%7B%5C%22log%5C%22%3A%5C%22%5C%22%2C%5C%22sceneid%5C%22%3A%5C%22HWJhPageh5%5C%22%7D%2C%5C%22secretp%5C%22%3A%5C%22${secretp}%5C%22%2C%5C%22random%5C%22%3A%5C%2276834380%5C%22%7D%22%7D&client=wh5&clientVersion=1.0.0&uuid=0bcbcdb2a68f16cf9c9ad7c9b944fd141646a849&appid=o2_act`
 //$.log(secretp)
- const MyRequest = PostRequest(`advId=funny_raise`,body)
- return new Promise((resolve) => {
-   $.post(MyRequest,async(error, response, data) =>{
-    try{
-        const result = JSON.parse(data)
-        if(logs)$.log(data)
-        if(result.data.bizCode == 0){
-           console.log("\n获得"+result.data.result.levelUpAward.pieceRedpacket.value+result.data.result.levelUpAward.pieceRedpacket.name+"\n")
-   await $.wait(4000)
-        }else{
-           $.log("解锁失败，好玩币不足"+result.data.bizMsg+"\n")
-        }
-        }catch(e) {
-          $.logErr(e, response);
-      } finally {
-        resolve();
-      } 
-    })
-   })
-  }
+ //const MyRequest = PostRequest(`advId=funny_raise`,body)
+ //return new Promise((resolve) => {
+ //  $.post(MyRequest,async(error, response, data) =>{
+  //  try{
+    //    const result = JSON.parse(data)
+  //     if(logs)$.log(data)
+      //  if(result.data.bizCode == 0){
+   //        console.log("\n获得"+result.data.result.levelUpAward.pieceRedpacket.value+result.data.result.levelUpAward.pieceRedpacket.name+"\n")
+ //  await $.wait(4000)
+  //      }else{
+    //       $.log("解锁失败，好玩币不足"+result.data.bizMsg+"\n")
+    //    }
+    //    }catch(e) {
+    //      $.logErr(e, response);
+    //  } finally {
+    //    resolve();
+    //  } 
+   // })
+  // })
+ // }
 async function getsecretp(){
  const body = `functionId=funny_getHomeData&body=%7B%22isNeedPop%22%3A%221%22%2C%22currentEarth%22%3A3%7D&client=wh5&clientVersion=1.0.0&appid=o2_act`
  const MyRequest = PostRequest(`advId=funny_getHomeData`,body)
