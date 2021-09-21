@@ -120,7 +120,7 @@ async function main() {
          await takePostRequest('draw');
          await $.wait(1500);
      }
-     if($.shareUuid === '4a6d76640ecb468d9895a8d4105efffc'){
+     if($.shareUuid === '80d11acb818747108db6475a42601c5c'){
          $.shareUuid = $.activityData.actorUuid;
      }
 }
