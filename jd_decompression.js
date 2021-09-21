@@ -1,6 +1,6 @@
 /**
  * 蚊子腿豆子，10月16号应该可以参与瓜分
- * cron  5 6,18 1-16,21-30 9,10 *
+cron  5 6,18 1-16,21-30 9,10 *
  */
 const $ = new Env('热血心跳,狂解压');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
