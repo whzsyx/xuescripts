@@ -208,7 +208,7 @@ async function pasture() {
     $.taskList = [];
     await takeGetRequest('GetUserTaskStatusList');
     await $.wait(2000);
-    await doTask();
+    //await doTask();
     await $.wait(2000);
     //割草
     console.log(`\n开始进行割草`);
