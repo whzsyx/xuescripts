@@ -206,7 +206,7 @@ async function pasture() {
       await $.wait(1000);
     }
     $.taskList = [];
-    await takeGetRequest('GetUserTaskStatusList');
+    //await takeGetRequest('GetUserTaskStatusList');
     await $.wait(2000);
     //await doTask();
     await $.wait(2000);
