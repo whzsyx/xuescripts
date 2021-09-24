@@ -60,16 +60,16 @@ $.appId = 10028;
   $.CryptoJS = $.isNode() ? require('crypto-js') : CryptoJS;
   await requestAlgo();
   await $.wait(1000)
-  let res = await getAuthorShareCode('https://github.com/whzsyx/updateTeam/blob/main/shareCodes/cfd.json')
+  let res = await getAuthorShareCode('')
   if (!res) {
-    $.http.get({url: 'https://github.com/whzsyx/updateTeam/blob/main/shareCodes/cfd.json'}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
+    $.http.get({url: ''}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
     await $.wait(1000)
-    res = await getAuthorShareCode('https://github.com/whzsyx/updateTeam/blob/main/shareCodes/cfd.json')
+    res = await getAuthorShareCode('')
   }
-  let res2 = await getAuthorShareCode('https://github.com/whzsyx/updateTeam/blob/main/shareCodes/cfd.json')
+  let res2 = await getAuthorShareCode('')
   if (!res2) {
     await $.wait(1000)
-    res2 = await getAuthorShareCode('https://github.com/whzsyx/updateTeam/blob/main/shareCodes/cfd.json')
+    res2 = await getAuthorShareCode('')
   }
   $.strMyShareIds = [...(res && res.shareId || []), ...(res2 || [])]
   for (let i = 0; i < cookiesArr.length; i++) {
@@ -102,7 +102,7 @@ $.appId = 10028;
   for (let i = 0; i < cookiesArr.length; i++) {
     cookie = cookiesArr[i];
     $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
-    $.canHelp = true
+    $.canHelp = false
     UA = UAInfo[$.UserName]
     num = 0
     if ($.shareCodes && $.shareCodes.length) {
