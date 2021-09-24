@@ -229,7 +229,7 @@ async function pasture() {
     $.runFlag = true;
   //  console.log(`\n开始进行横扫鸡腿`);
     for (let i = 0; i < 10 && $.runFlag; i++) {
-      console.log(`开始第${i + 1}次横扫鸡腿`);
+     // console.log(`开始第${i + 1}次横扫鸡腿`);
      // await takeGetRequest('jump');
     //  await $.wait(2000);
     }
@@ -271,7 +271,7 @@ async function pasture() {
         $.runFeed = true;
         for (let k = 0; k < $.canFeedTimes && $.runFeed && k < 40; k++) {
           $.pause = false;
-          console.log(`开始第${k + 1}次喂白菜`);
+        // console.log(`开始第${k + 1}次喂白菜`);
          // await takeGetRequest('feed');
         //  await $.wait(4000);
           if ($.pause) {
