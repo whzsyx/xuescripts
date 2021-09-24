@@ -202,11 +202,11 @@ async function pasture() {
     await $.wait(1000);
     if ($.crowInfo.lastgettime) {
       console.log('收奶牛金币');
-      await takeGetRequest('cow');
+    //  await takeGetRequest('cow');
       await $.wait(1000);
     }
     $.taskList = [];
-    //await takeGetRequest('GetUserTaskStatusList');
+    await takeGetRequest('GetUserTaskStatusList');
     await $.wait(2000);
     //await doTask();
     await $.wait(2000);
@@ -216,12 +216,12 @@ async function pasture() {
     for (let i = 0; i < 10 && $.runFlag; i++) {
       $.mowingInfo = {};
       console.log(`开始第${i + 1}次割草`);
-      await takeGetRequest('mowing');
+     // await takeGetRequest('mowing');
       await $.wait(1000);
       if ($.mowingInfo.surprise === true) {
         //除草礼盒
         console.log(`领取除草礼盒`);
-        await takeGetRequest('GetSelfResult');
+       // await takeGetRequest('GetSelfResult');
         await $.wait(3000);
       }
     }
@@ -230,7 +230,7 @@ async function pasture() {
     console.log(`\n开始进行横扫鸡腿`);
     for (let i = 0; i < 10 && $.runFlag; i++) {
       console.log(`开始第${i + 1}次横扫鸡腿`);
-      await takeGetRequest('jump');
+     // await takeGetRequest('jump');
       await $.wait(2000);
     }
     await takeGetRequest('GetHomePageInfo');
@@ -249,7 +249,7 @@ async function pasture() {
       if(Number(materialNumber) < 400){
         for (let j = 0; j < canBuyTimes && j < 4; j++) {
           console.log(`第${j + 1}次购买白菜`);
-          await takeGetRequest('buy');
+        //  await takeGetRequest('buy');
           await $.wait(2000);
         }
         await takeGetRequest('GetHomePageInfo');
@@ -272,7 +272,7 @@ async function pasture() {
         for (let k = 0; k < $.canFeedTimes && $.runFeed && k < 40; k++) {
           $.pause = false;
           console.log(`开始第${k + 1}次喂白菜`);
-          await takeGetRequest('feed');
+         // await takeGetRequest('feed');
           await $.wait(4000);
           if ($.pause) {
             await takeGetRequest('GetHomePageInfo');
@@ -281,7 +281,7 @@ async function pasture() {
               $.onepetInfo = $.homeInfo.petinfo[n];
               if ($.onepetInfo.cangetborn === 1) {
                 console.log(`开始收鸡蛋`);
-                await takeGetRequest('GetEgg');
+             //   await takeGetRequest('GetEgg');
                 await $.wait(1000);
               }
             }
