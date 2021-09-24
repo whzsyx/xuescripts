@@ -137,7 +137,7 @@ function getShareCode(name) {
           console.log(`${JSON.stringify(err)}`);
           console.log(`${$.name} API请求失败，请检查网路重试`);
         } else {
-          console.log(`优先账号内部互助，有剩余助力次数再帮【zero205】助力`);
+          console.log(`优先账号内部互助`);
           $.shareCode = JSON.parse(data);
         }
       } catch (e) {
