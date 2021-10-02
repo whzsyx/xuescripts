@@ -121,7 +121,7 @@ async function cfd() {
 
     //抽奖
     await $.wait(2000)
-    await composePearlState(4)
+    //await composePearlState(4)
 
     //助力奖励
     await $.wait(2000)
