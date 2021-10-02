@@ -45,9 +45,9 @@ $.appId = 10028;
   await $.wait(1000)
   let res = await getAuthorShareCode('https://raw.githubusercontent.com/whzsyx/updateTeam/main/shareCodes/cfd.json')
   if (!res) {
-    $.http.get({url: 'https://raw.githubusercontent.com/whzsyx/updateTeam/main/shareCodes/cfd.json'}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
+    $.http.get({url: 'https://purge.jsdelivr.net/gh/whzsyx/updateTeam@main/shareCodes/cfd.json'}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
     await $.wait(1000)
-    res = await getAuthorShareCode('https://raw.githubusercontent.com/whzsyx/updateTeam/main/shareCodes/cfd.json')
+    res = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/whzsyx/updateTeam@main/shareCodes/cfd.json')
   }
   $.strMyShareIds = [...(res && res.shareId || [])]
   for (let i = 0; i < cookiesArr.length; i++) {
