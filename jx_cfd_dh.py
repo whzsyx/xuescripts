@@ -1,6 +1,5 @@
 import requests
 #写的很随意，凑合用吧..
-#cron 0 * * * * jx_cfd_dh.py
 # 定时 0 * * * *
 #填入你的cookie↓↓↓
 num_list = ['','']
