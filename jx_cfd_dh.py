@@ -16,7 +16,7 @@ while i < len(num_list):
        'Host':'m.jingxi.com',
        'user-agent':'dpingou;android;5.3.0;11;65df54b15883bd4c;network/wifi;model/PEEM00;appBuild/18113;partner/meizu01;;session/230;aid/65df54b15883bd4c;oaid/;pap/JA2019_3111789;brand/OPPO;eu/9326666383335326;fv/1663738363236623;Mozilla/5.0 (Linux; Android 11; GM1910 Build/QKQ1.200223.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.185 Mobile Safari/537.36',
        'accept':'*/*',
-       'Referer':'https://st.jingxi.com/fortune_island/index2.html?ptag=7155.9.47&sceneval=2';,
+       'Referer':'https://st.jingxi.com/fortune_island/index2.html?ptag=7155.9.47&sceneval=2',
        'cookie':num_list[i]
           }
        print("正在执行")  
