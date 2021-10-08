@@ -1,7 +1,8 @@
 //import requests
 //#写的很随意，凑合用吧..
-
-//# 定时 0 * * * *
+/*
+cron 0 * * * * jd_cfdhctx.js
+*/
 const $ = new Env('财富岛兑换');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
