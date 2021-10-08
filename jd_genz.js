@@ -55,8 +55,19 @@ async function main() {
     $.reg = false;
     $.tasklist = [];
     await task('apTaskList', { "linkId": appid, "uniqueId": "" })
+    await $.wait(500);
     await task('findPostTagList', { "typeId": typeid })
     if (!$.reg && $.tasklist) {
+        await task('genzTaskCenter')
+        if ($.genzTask) {
+            $.log(`当前芥么豆：${$.totalPoints}`)
+            for (const vo of $.genzTask) {
+                if (!vo.completionStatus) {
+                    $.log(`去完成：${vo.taskName}新手任务！`)
+                    await task('genzDoNoviceTasks', { "taskId": vo.taskId, "completionStatus": 1 })
+                }
+            }
+        }
         for (const vo of $.tasklist) {
             if (vo.taskType != "JOIN_INTERACT_ACT" && vo.taskType != "SHARE_INVITE") {
                 $.log(`去完成：${vo.taskShowTitle}`)
@@ -100,6 +111,14 @@ async function main() {
                                 }
                             }
                         }
+                        if (vo.taskShowTitle === '订阅芥么活动通知') {
+                            $.log("去完成订阅任务")
+                            for (let x = 0; x < vo.taskLimitTimes; x++) {
+                                if (vo.taskDoTimes != vo.taskLimitTimes) {
+                                    await task('commonSubscribeMessage', { "businessCode": "SUB10015", "behaviour": "accept", "jumpPage": "/pages/login/wv-common/wv-common?h5_url=https%3A%2F%2Fzsign.jd.com%2F%3FactivityId%3DKRFM89OcZwyjnyOIPyAZxA%26channel%3Dtasks" })
+                                }
+                            }
+                        }
                     }
                 }
             } else {
@@ -109,7 +128,7 @@ async function main() {
                 $.log(`任务：${vo.taskShowTitle}，已完成`)
             }
         }
-    } else { console.log("未注册，请登录一次小程序") } return;
+    } else { console.log("未注册！请手动进入一次小程序任务\n入口：微信小程序-芥么-赚豪礼") } return;
 }
 function task(function_id, body) {
     return new Promise(resolve => {
@@ -170,6 +189,21 @@ function task(function_id, body) {
                         case 'cancelFollowHim':
                             if (data.code === 0) {
                                 console.log("取消关注");
+                            } else {
+                                console.log(JSON.stringify(data));
+                            }
+                            break;
+                        case 'genzTaskCenter':
+                            $.genzTask = data.data.noviceTaskStatusList;
+                            $.totalPoints = data.data.totalPoints;
+                            break;
+                        case 'genzDoNoviceTasks':
+                            if (data.success) {
+                                if (data.data) {
+                                    console.log("任务完成");
+                                } else {
+                                    console.log(JSON.stringify(data));
+                                }
                             } else {
                                 console.log(JSON.stringify(data));
                             }
