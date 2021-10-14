@@ -8,7 +8,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message ='', index, nickName = '';
 let cfd_moon = process.env.CFD_MOON_NUM * 1;
-let   dwLvl=9;
+let   dwLvl=3;
 let   ddwVirHb=1000;
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
@@ -38,13 +38,13 @@ Date.prototype.Format = function (fmt) { //author: meizz
 !(async () => {
     if(cfd_moon === 5){
     //兑换5元红包
-        dwLvl=10;
+        dwLvl=4;
         ddwVirHb=500;
         console.log("*****你设置CFD_MOON_NUM兑换5元红包*****");
     }
     if(cfd_moon === 10){
     //兑换10元红包
-        dwLvl=9;
+        dwLvl=3;
         ddwVirHb=1000;
         console.log("*****你设置CFD_MOON_NUM兑换10元红包*****");
 
