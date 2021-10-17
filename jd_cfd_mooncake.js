@@ -84,7 +84,7 @@ $.appId = 10028;
     UA = UAInfo[$.UserName]
     num = 0
     if ($.shareCodes && $.shareCodes.length) {
-      console.log(`\n自己账号内部循环互助\n`);
+     // console.log(`\n自己账号内部循环互助\n`);
       for (let j = 0; j < $.shareCodes.length && $.canHelp; j++) {
         console.log(`账号${$.UserName} 去助力 ${$.shareCodes[j]}`)
         $.delcode = false
