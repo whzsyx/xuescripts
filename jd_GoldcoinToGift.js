@@ -2,22 +2,10 @@
 攒金币 赢大礼
 活动地址: 京东APP-智能生活-右侧悬浮窗
 活动时间：2021-09-28到2021-10-28
-脚本兼容: QuantumultX, Surge,Loon, JSBox, Node.js
-=================================Quantumultx=========================
 [task_local]
 #攒金币 赢大礼
-22 0,8 * * * https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_GoldcoinToGift.js, tag=攒金币 赢大礼, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
-
-=================================Loon===================================
-[Script]
-cron "22 0,8 * * *" script-path=https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_GoldcoinToGift.js,tag=攒金币 赢大礼
-
-===================================Surge================================
-攒金币 赢大礼 = type=cron,cronexp="22 0,8 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_GoldcoinToGift.js
-
-====================================小火箭=============================
-攒金币 赢大礼 = type=cron,script-path=https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_GoldcoinToGift.js, cronexpr="22 0,8 * * *", timeout=3600, enable=true
- */
+cron 22 0,8 * * * jd_GoldcoinToGift.js
+*/
 const $ = new Env('攒金币 赢大礼');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
