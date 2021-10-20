@@ -22,6 +22,7 @@ cron "4 2,10 * * *" script-path=https://raw.githubusercontent.com/Aaron-lv/sync/
 const $ = new Env('京喜领88元红包');
 const notify = $.isNode() ? require('./sendNotify') : {};
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : {};
+let helpnum=3;
 let cookiesArr = [],
     cookie = '';
 let UA, UAInfo = {},
@@ -47,17 +48,8 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3';
         '活动入口：京喜app-》我的-》京喜领88元红包\n' +
         '助力逻辑：先自己京东账号相互助力，如有剩余助力机会，则助力作者\n' +
         '温馨提示：如提示助力火爆，可尝试寻找京东客服')
-    let res = await getAuthorShareCode('')
-    if (!res) {
-        $.http.get({ url: '' }).then((resp) => {}).catch((e) => $.log('刷新CDN异常', e));
-        await $.wait(1000)
-        res = await getAuthorShareCode('')
-    }
-    if (res && res.activeId) $.activeId = res.activeId;
-    res["codes"] = [];
-    $.authorMyShareIds = [...((res && res.codes) || [])];
-    //开启红包,获取互助码
-    for (let i = 0; i < cookiesArr.length; i++) {
+       //开启红包,获取互助码
+    for (let i = 0; i < helpnum; i++) {
         cookie = cookiesArr[i];
         $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
         $.index = i + 1;
@@ -85,7 +77,13 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3';
         cookie = cookiesArr[i];
         $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
         $.canHelp = true;
-        UA = UAInfo[$.UserName]
+    if(i < helpnum){
+	    UA = UAInfo[$.UserName]
+    }else{
+    	UA = `jdpingou;iPhone;4.13.0;14.4.2;${randomString(40)};network/wifi;model/iPhone10,2;appBuild/100609;ADID/00000000-0000-0000-0000-000000000000;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/${Math.random * 98 + 1};pap/JA2019_3111789;brand/apple;supportJDSHWK/1;Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148`
+    }
+    
+
         token = await getJxToken()
         for (let j = 0; j < $.packetIdArr.length && $.canHelp; j++) {
             console.log(`【${$.UserName}】去助力【${$.packetIdArr[j].userName}】邀请码：${$.packetIdArr[j].strUserPin}`);
@@ -100,20 +98,6 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3';
                 $.packetIdArr.splice(j, 1)
                 j--
                 continue
-            }
-        }
-        if ($.canHelp && ($.authorMyShareIds && $.authorMyShareIds.length)) {
-            console.log(`\n【${$.UserName}】有剩余助力机会，开始助力作者\n`)
-            for (let j = 0; j < $.authorMyShareIds.length && $.canHelp; j++) {
-                console.log(`【${$.UserName}】去助力作者的邀请码：${$.authorMyShareIds[j]}`);
-                $.max = false;
-                await enrollFriend($.authorMyShareIds[j]);
-                await $.wait(5000);
-                if ($.max) {
-                    $.authorMyShareIds.splice(j, 1)
-                    j--
-                    continue
-                }
             }
         }
     }
