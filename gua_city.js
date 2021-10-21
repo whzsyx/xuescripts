@@ -27,9 +27,9 @@ if ($.isNode()) {
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
 let inviteCodes = [
-  'RtGKzb_2QQqietacRNJg0Jxn0V0wCtHeJQiKmzTTsObesM1X6A',
-  'RtGKn5_gKW3BDcXaRLV2mj9LDNpxOowkDy_2bvsUf6YJLsKb',
-  'RtGKz-ulFViid4eSHtFi3yNg90yuh7K2ellP6wOG_p8ql-KCGw'
+  'RtGKzumlSA-hfNeSFtFn1Ytt0V9-hul6jhfgN9dq3Z3VYZnbMw',
+  'RtGKzOihRQ73K9CYQ4Zi0eglRBFFXxUj5OhFfJcKZopRrPfLhQ',
+  'RtGKrJv5GFTBJcP4RIlxmsXcSnvKBp0Spks4pqszPHh6-tAA'
   
 ]
 $.shareCodesArr = [];
