@@ -1,5 +1,4 @@
 
-
 const $ = new Env('P');
 
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -10,6 +9,7 @@ let secretp='',inviteId=[]
 let helpnum=3;
 let groupnum=6;
 let num=0;
+
 Date.prototype.Format = function (fmt) { //author: meizz
   var o = {
     "M+": this.getMonth() + 1, //月份
@@ -53,6 +53,19 @@ $.inviteId  = [];
       await getUA()
     }
   }
+
+
+  if(process.env.GROUPInviteId){
+    $.inviteId.push(process.env.GROUPInviteId);
+    
+
+  }else{
+    console.log(`\n\n 你没有输入组队码，将读取前n账号助力码\n`)
+    
+  }
+    
+   
+  
   console.log( nowtime  );
   for (let i = 0; i < helpnum; i++) {
     if (cookiesArr[i]) {
