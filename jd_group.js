@@ -1,6 +1,6 @@
-//0 * * * * 环游记 自动入会、签到、任务、升级、开宝箱、捡金币
-//半残品随便跑跑
-const $ = new Env('环游记');
+
+
+const $ = new Env('P');
 
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 
