@@ -46,6 +46,10 @@ if ($.isNode()) {
     $.msg($.name, '【提示】请先获取cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
     return;
   }
+  if(new Date().getHours() >= 18){
+   $.msg($.name,"不在竞猜时间内！请在18点之前运行")
+   return;
+}
   for (let i =0; i < cookiesArr.length; i++) {
       cookie = cookiesArr[i];
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
@@ -67,6 +71,7 @@ if ($.isNode()) {
       await getlist()
       await select()
       await quiz()
+      await lottery()
   }
 for(let i = 0; i < cookiesArr.length; i++){
       cookie = cookiesArr[i];
@@ -130,7 +135,7 @@ async function quiz(){
         const result = JSON.parse(data)
         $.log(data)
         if(result && result.code && result.code == 200){
-           console.log("\n参与竞猜成功，开奖时间为:"+(new Date().getDay()+"月"+(new Date().getDate()+1)+"日")+" 10:00 \n")
+           console.log("\n参与竞猜成功，开奖时间为:"+(new Date().getMonth()+1+"月"+(new Date().getDate()+1)+"日")+" 10:00 \n")
    await $.wait(8000)
         }else{
            $.log(result.msg+"\n")
@@ -259,7 +264,7 @@ await $.wait($.waits*1000)
 }
 async function doTask(){
 //$.log(1111+tasktype)
- const body = `appid=china-joy&functionId=champion_game_prod&body={"parentId":"${tasktype}","taskId":"${taskid}","activityDate":"20211023","apiMapping":"${$.end}"}&t=${new Date().getTime()}&loginType=2`
+ const body = `appid=china-joy&functionId=champion_game_prod&body={"parentId":"${tasktype}","taskId":"${taskid}","activityDate":"${currentdate}","apiMapping":"${$.end}"}&t=${new Date().getTime()}&loginType=2`
 //$.log(body)
  const MyRequest = PostRequest(body)
  return new Promise((resolve) => {
@@ -281,17 +286,22 @@ async function doTask(){
     })
    })
   }
-async function upload(){
+async function lottery(){
+//$.log(1111+tasktype)
+ const body = `appid=china-joy&functionId=champion_game_prod&body={"activityDate":"${currentdate}","apiMapping":"/api/lottery/lottery"}&t=${new Date().getTime()}&loginType=2`
+//$.log(body)
+ const MyRequest = PostRequest(body)
  return new Promise((resolve) => {
-    let upload_url = {
-   		url: `https://pool.nz.lu/upload/PKv2/Phoneupload/11111`,
-   	}
-   $.get(upload_url,async(error, response, data) =>{
+   $.post(MyRequest,async(error, response, data) =>{
     try{
         const result = JSON.parse(data)
         $.log(data)
-        if(result.code == 0)
-          $.log(result.msg+"观看"+result.amount+"\n")
+        if(result && result.code && result.code == 200){
+           console.log("完成抽奖")
+   await $.wait(8000)
+        }else{
+           $.log(result.msg+"\n")
+        }
         }catch(e) {
           $.logErr(e, response);
       } finally {
@@ -299,7 +309,7 @@ async function upload(){
       } 
     })
    })
-  } 
+  }
 
 //showmsg
 //boxjs设置tz=1，在12点<=20和23点>=40时间段通知，其余时间打印日志
