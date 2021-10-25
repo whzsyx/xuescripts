@@ -7,7 +7,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let cookiesArr = [], cookie = '';
 let isLoginInfo = {}
 $.groupId  = [];
-let helpnum =3
+let helpnum =50
 //默认助力前三
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
