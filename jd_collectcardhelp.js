@@ -7,7 +7,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let cookiesArr = [], cookie = '';
 let isLoginInfo = {}
 $.groupId  = [];
-let helpnum =process.env.CardNum ? process.env.CardNum : 3;
+let helpnum =process.env.CardNum ? process.env.CardNum : 15;
 //默认助力前三
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
