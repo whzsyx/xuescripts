@@ -30,9 +30,9 @@ let inviteCodes = [
 //'RtGKzb_2QQqietacRNJg0Jxn0V0wCtHeJQiKmzTTsObesM1X6A',
 //'RtGKz-ulFViid4eSHtFi3yNg90yuh7K2ellP6wOG_p8ql-KCGw',
 //'RtGKze73FF-je9WbE90xhTjnh0XYpVF3_hsg5IvDM3PQQO6dlw'
-'RtGKzrn1Qgj2LdeTENI00EaTgQvemIneEC3or2KgNenYV4NApA',
-'RtGKzu73EA6iKIXPEtIzgiQg14_hUm5pB0-gnMG7eh9d6m2Jpg',
-'HYfgwOWiGEbvMoPWW5hqiJjRdXkm47u3cAiTtw'
+'XcLkzOulQA6qeYqSW5h_1vlo5rCHEgXoBfT-HxgYFeZJ',
+'RtGKkrX4Mn7qB_rYX5dbmoXcNDLlKnCtL6FQAOFkmCmiztsr',
+'RtGKzL_3EwmhKIafRYVn1AG43TJYYRJO6upIOYzOl0NVvJUMOg'
 
 ]
 $.shareCodesArr = [];
