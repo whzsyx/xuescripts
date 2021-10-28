@@ -77,7 +77,7 @@ function taskPostUrl(){
 
 function taskUrl(cookie) {
             return {
-                "url": `https://m.jingxi.com/jxbfd/user/ExchangePearlHb?__t=1635439353425&strZone=jxbfd&dwLvl=${dwLvl}&dwIsRandHb=0&ddwVirHb=${ddwVirHb}&strPoolName=anhjZmQyX2V4Y2hhbmdlX2hjaGJfMjAyMTEwMjc=&dwExchangeType=0&_stk=__t%2CddwVirHb%2CdwExchangeType%2CdwIsRandHb%2CdwLvl%2CstrPoolName%2CstrZone&_ste=1&h5st=20211029004233426%3B4026339969767162%3B10032%3Btk01wbab91c6d30nUod%2FAleEO%2Bxsseqo%2FZrZoSFDyN7dlUuL5Hn%2B5aiRlz%2Bd%2BwvGj4YPJ4pMGx6fKs2ziYmj57dYULEj%3B081fe0afc28dcfdf51d53a3a4e9b8a7f3976285e39d4ab158c5cd693aefe456e&_=1635439353430&sceneval=2&g_login_type=1&callback=jsonpCBKH&g_ty=ls%0D%0A`,
+                "url": `https://m.jingxi.com/jxbfd/user/ExchangePearlHb?__t=1635439353633&strZone=jxbfd&dwLvl=${dwLvl}&dwIsRandHb=0&ddwVirHb=${ddwVirHb}&strPoolName=anhjZmQyX2V4Y2hhbmdlX2hjaGJfMjAyMTEwMjc=&dwExchangeType=0&_stk=__t%2CddwVirHb%2CdwExchangeType%2CdwIsRandHb%2CdwLvl%2CstrPoolName%2CstrZone&_ste=1&h5st=20211029004233634%3B4026339969767162%3B10032%3Btk01wbab91c6d30nUod%2FAleEO%2Bxsseqo%2FZrZoSFDyN7dlUuL5Hn%2B5aiRlz%2Bd%2BwvGj4YPJ4pMGx6fKs2ziYmj57dYULEj%3B7f26558e5308f6353ae841844113620eb8bcfe0e51431c32474a9fef51edac03&_=1635439353636&sceneval=2&g_login_type=1&callback=jsonpCBKH&g_ty=ls%0D%0A`,
                 "headers": {
                     "Host": "m.jingxi.com",
                     "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
