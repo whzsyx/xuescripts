@@ -1,22 +1,15 @@
-const $ = new Env('老牛-发财挖宝help');
+const $ = new Env('搞基大神-发财挖宝助力');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const JD_API_HOST = 'https://api.m.jd.com';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
-let fcwbinviteCode=''
-let fcwbinviter=''
-let fcwbroud=''
-if (process.env.fcwbinviteCode) {
-  fcwbinviteCode = process.env.fcwbinviteCode;
-}
-if (process.env.fcwbinviter) {
-  fcwbinviter = process.env.fcwbinviter;
-}
-if (process.env.fcwbroud) {
-  fcwbroud = process.env.fcwbroud;
-}
+
+
+let insertCodes = []
+let inviteCodes = []
+
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
@@ -50,20 +43,39 @@ if ($.isNode()) {
         }
         continue
       }
-
-await home()
-await BROWSE_CHANNEL(1)
-await BROWSE_CHANNEL(2)
-await BROWSE_CHANNEL(3)
-await BROWSE_CHANNEL(4)
-await help()
-for (let i = 0; i < 5; i++) {
-console.log(`挖宝${i}次`) 
-      await wb(fcwbroud,i,i)
+          
+    
+    
+    }
+console.log('\n入口 狗东极速版 我的 发财挖宝\n');
+console.log('\n本脚本无任何内置助力\n如果你发现有那么就是别人二改加的\n一切与本人无关\n');
+await home()  
+console.log('\n注意全部助力给账号一\n');
+console.log('\n注意全部助力给账号一\n');
+console.log('\n注意全部助力给账号一\n');
 
     }
+ 
+ 
+     console.log('\n##################开始全部助力账号1#################\n');
+    for (let i = 0; i < cookiesArr.length; i++) {
+        cookie = cookiesArr[i];
+        $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
+        $.index = i + 1;
+        
+        if (!cookie) continue
+        for (let code of inviteCodes) {
+            if ($.UserName === code['user']) continue;
+            if ($.index === 1 &&2) break
+            console.log(`\n【${$.UserName}】去助力【${code['user']}】邀请码：${code['fcwbinviteCode']}`);
+            let res = await help(code['fcwbinviter'],code['fcwbinviteCode'])
+            
+
+        }
+
     }
-  }
+
+  
 })()
   .catch((e) => {
     $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -74,10 +86,10 @@ console.log(`挖宝${i}次`)
 function wb(round,rowIdx,colIdx) {
 
  return new Promise((resolve) => {
-  //let body = {"round":${fcwbroud},"rowIdx":${rowIdx},"colIdx":${colIdx},"linkId":"SS55rTBOHtnLCm3n9UMk7Q"}
+
   
   const nm= {
-    url: `${JD_API_HOST}/?functionId=happyDigDo&body={"round":${fcwbroud},"rowIdx":${rowIdx},"colIdx":${colIdx},"linkId":"SS55rTBOHtnLCm3n9UMk7Q"}&t=1635561607124&appid=activities_platform&client=H5&clientVersion=1.0.0`,
+    url: `${JD_API_HOST}/?functionId=happyDigDo&body={"round":${curRound},"rowIdx":${rowIdx},"colIdx":${colIdx},"linkId":"SS55rTBOHtnLCm3n9UMk7Q"}&t=1635561607124&appid=activities_platform&client=H5&clientVersion=1.0.0`,
    
     headers: {
 
@@ -117,7 +129,7 @@ function wb(round,rowIdx,colIdx) {
  return new Promise((resolve) => {
   let body = {"linkId":"SS55rTBOHtnLCm3n9UMk7Q"}
   $.get(taskurl('happyDigHome',body), async (err, resp, data) => {
-       //console.log(data)  
+      // console.log(data)  
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -126,10 +138,25 @@ function wb(round,rowIdx,colIdx) {
           if (safeGet(data)) {
             data = JSON.parse(data);
              if(data.success==true){
-               console.log(`export fcwbinviteCode='${data.data.inviteCode}'`)  
-               console.log(`export fcwbinviter='${data.data.markedPin}'`)  
-             }else if(data.success==false){
-             console.log('黑号 快去买吧 叼毛')}
+                 curRound = data.data.curRound
+                 console.log('第'+curRound+'关')
+                 
+             
+               console.log(`inviteCode='${data.data.inviteCode}'`)  
+               console.log(`inviter='${data.data.markedPin}'`)  
+              if (data.data && data.data.inviteCode && inviteCodes.length === 0) {
+               inviteCodes.push({
+                user: $.UserName,
+                fcwbinviteCode: data.data.inviteCode,
+                fcwbinviter: data.data.markedPin,
+                });
+             }
+                 
+             }             else if(data.success==false){
+             console.log('黑号 快去买吧 叼毛')
+              
+          }
+
           }
         }
       } catch (e) {
@@ -168,11 +195,11 @@ function wb(round,rowIdx,colIdx) {
   })
 }
 
-  function help() {
+  function help(a,b) {
  return new Promise((resolve) => {
  
   const nm= {
-    url: `${JD_API_HOST}/?functionId=happyDigHelp&body={"linkId":"SS55rTBOHtnLCm3n9UMk7Q","inviter":"${fcwbinviter}","inviteCode":"${fcwbinviteCode}"}&t=1635561607124&appid=activities_platform&client=H5&clientVersion=1.0.0`,
+    url: `${JD_API_HOST}/?functionId=happyDigHelp&body={"linkId":"SS55rTBOHtnLCm3n9UMk7Q","inviter":"${a}","inviteCode":"${b}"}&t=1635561607124&appid=activities_platform&client=H5&clientVersion=1.0.0`,
    
     headers: {
 
