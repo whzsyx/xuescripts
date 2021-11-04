@@ -299,7 +299,7 @@ await quiz(quizId)
 async function readShareCodes(){
   return new Promise((resolve) => {
     let url = {
-   		url: `https://raw.githubusercontent.com/Ariszy/TGBOT/main/sjjc.js`,       
+   		url: ``,       
    	}
    $.get(url,async(error, response, data) =>{
     try{
