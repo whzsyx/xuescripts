@@ -4,11 +4,11 @@ cron 0 0,12,18 * * *  https://raw.githubusercontent.com/smiek2121/scripts/master
 整点跑 红包几率大点
 ck1助力 作者
 其余助力ck1
-https://u.jd.com/ywl3iVD
+https://u.jd.com/2IdJCQA
 跳转到app 可查看助力情况
 
 返利变量：gua_redEnvelope_rebateCode，默认给脚本作者返利，若需要返利给自己，请自己修改返利变量gua_redEnvelope_rebateCode
-例：gua_redEnvelope_rebateCode="你的返利code"
+例：gua_redEnvelope_rebateCode="2IdJCQA"
 */
 
 let rebateCodes = ''
@@ -62,9 +62,9 @@ let nowTime = new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*
     }
   }
   if(message){
-    $.msg($.name, ``, `${message}\nhttps://u.jd.com/ywl3iVD\n\n跳转到app 可查看助力情况`);
+    $.msg($.name, ``, `${message}\nhttps://u.jd.com/2IdJCQA\n\n跳转到app 可查看助力情况`);
     if ($.isNode()){
-      await notify.sendNotify(`${$.name}`, `${message}\n\nhttps://u.jd.com/ywl3iVD\n跳转到app 可查看助力情况`);
+      await notify.sendNotify(`${$.name}`, `${message}\n\nhttps://u.jd.com/2IdJCQA\n跳转到app 可查看助力情况`);
     }
   }
 })()
@@ -323,11 +323,11 @@ function getEid(arr) {
 
 function getUA(){
   $.UA = `jdapp;iPhone;10.2.2;14.3;${randomString(40)};M/5.0;network/wifi;ADID/;model/iPhone12,1;addressid/4199175193;appBuild/167863;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1;`
-  rebateCode = 'ywl3iVD'
+  rebateCode = '2IdJCQA'
   if($.index != 1){
-    let arr = [rebateCodes,'ywl3iVD']
+    let arr = [rebateCodes,'2IdJCQA']
     rebateCode = arr[Math.floor(Math.random() * arr.length)] || rebateCode
-    if(!rebateCode) rebateCode = 'ywl3iVD'
+    if(!rebateCode) rebateCode = '2IdJCQA'
   }
   console.log(rebateCode)
 }
