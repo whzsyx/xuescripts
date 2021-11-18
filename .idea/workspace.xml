@@ -28,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gua_MMdou.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            <state relative-caret-position="275">
+              <caret line="11" column="57" lean-forward="true" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -51,8 +51,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="46" />
-    <option name="y" value="7" />
+    <option name="x" value="17" />
+    <option name="y" value="15" />
     <option name="width" value="1750" />
     <option name="height" value="980" />
   </component>
@@ -106,22 +106,21 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1637224785178</updated>
-      <workItem from="1637224787792" duration="2271000" />
+      <workItem from="1637224787792" duration="2889000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2271000" />
+    <option name="totallyTimeSpent" value="2889000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="37" y="6" width="1400" height="784" extended-state="0" />
-    <editor active="true" />
+    <frame x="14" y="12" width="1400" height="784" extended-state="0" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
+      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.3297546" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -139,6 +138,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/gua_share4.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -152,8 +161,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gua_MMdou.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="275">
+          <caret line="11" column="57" lean-forward="true" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
