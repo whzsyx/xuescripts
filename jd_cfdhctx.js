@@ -38,7 +38,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 !(async () => {
     if(cfd_moon === 5){
     //兑换5元红包
-        dwLvl=3;
+        dwLvl=6;
         ddwVirHb=500;
         console.log("*****你设置CFD_MOON_NUM兑换5元红包*****");
     }
