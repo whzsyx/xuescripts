@@ -38,7 +38,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 !(async () => {
     if(cfd_moon === 5){
     //兑换5元红包
-        dwLvl=6;
+        dwLvl=3;
         ddwVirHb=500;
         console.log("*****你设置CFD_MOON_NUM兑换5元红包*****");
     }
@@ -79,7 +79,7 @@ function taskPostUrl(){
 
 function taskUrl(cookie) {
             return {
-                "url": `https://m.jingxi.com/jxbfd/user/ExchangePearlHb?__t=1637032909149&strZone=jxbfd&dwLvl=${dwLvl}&dwIsRandHb=0&ddwVirHb=${ddwVirHb}&strPoolName=anhjZmQyX2V4Y2hhbmdlX2hjaGJfMjAyMTExMTI=&dwExchangeType=0&_stk=__t%2CddwVirHb%2CdwExchangeType%2CdwIsRandHb%2CdwLvl%2CstrPoolName%2CstrZone&_ste=1&h5st=20211116112149150%3B4026339969767162%3B10032%3Btk01w80471b4f30nUns%2FokS4AC%2Funna%2B6HIPhW5BFwSxpXRKh72%2FaRpX2XQwAb01a4a%2Fk%2BaF1yBcns%2FybCzrMZs%2BHJOt%3B0be608bc516822d5cb61b157f6356a3e25f23d8619eaff98c931c34cec0b89c7&_=1637032909158&sceneval=2&g_login_type=1&callback=jsonpCBKH&g_ty=ls%0D%0A`,
+                "url": `https://m.jingxi.com/jxbfd/user/ExchangePearlHb?__t=1637644996521&strZone=jxbfd&dwLvl=${dwLvl}&dwIsRandHb=0&ddwVirHb=${ddwVirHb}&strPoolName=anhjZmQyX2V4Y2hhbmdlX2hjaGJfMjAyMTExMTk=&dwExchangeType=0&_stk=__t%2CddwVirHb%2CdwExchangeType%2CdwIsRandHb%2CdwLvl%2CstrPoolName%2CstrZone&_ste=1&h5st=20211123132316521%3B4026339969767162%3B10032%3Btk01wb7d01cba30n0yufJ5OKd67uGogbvWXeZH2xDZPduztSPjPeF0cyp182b7K4mbxinXr3YYDDyCyE6f5MTotRqGnq%3B7535ebaff1384a8e5d4114047359be0115873eb4551a10a1d4dc89ff5c174d81&_=1637644996523&sceneval=2&g_login_type=1&callback=jsonpCBKH&g_ty=ls%0D%0A`,
                 "headers": {
                     "Host": "m.jingxi.com",
                     "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
