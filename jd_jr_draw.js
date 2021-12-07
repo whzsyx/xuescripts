@@ -10,7 +10,7 @@ by:小手冰凉 tg:@chianPLA
 ============Node===============
 [task_local]
 #每周领取权益活动
-45 7,18 7 * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_jr_draw.js, tag=每周领取权益活动, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jxcfd.png, enabled=true
+37 8 * * 2 https://raw.githubusercontent.com/KingRan/JDJB/main/jd_jr_draw.js, tag=每周领取权益活动, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jxcfd.png, enabled=true
 
 ================Loon==============
 [Script]
