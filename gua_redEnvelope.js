@@ -23,8 +23,7 @@ if ($.isNode()) {
 rebateCodes = $.isNode() ? (process.env.gua_redEnvelope_rebateCodes ? process.env.gua_redEnvelope_rebateCodes : `${rebateCodes}`) : ($.getdata('gua_redEnvelope_rebateCodes') ? $.getdata('gua_redEnvelope_rebateCodes') : `${rebateCodes}`);
 let codeLsit = ['nLhunUX']
 if(rebateCodes){
-  codeLsit = ['']
-  codeLsit.push(rebateCodes)
+  codeLsit = [`${rebateCodes}`]
 }
 $.code = codeLsit[random(0, codeLsit.length)];
 !(async () => {
@@ -84,7 +83,6 @@ async function main() {
     let arr = getBody($.UA, $.url2);
     await getEid(arr);
     await getcouponUrl()
-    console.log($.couponUrl)
     if(!$.eid){
       $.eid = -1
     }
@@ -113,7 +111,7 @@ function getcouponUrl() {
           console.log(`${$.name} getcouponUrl API请求失败，请检查网路重试`);
         } else {
           if (data) {
-            $.couponUrl = (data.match(/"value":"(.*)"\}'/) && data.match(/"value":"(.*)"\}'/)[1]) || ''
+            $.couponUrl = (data.match(/"value":"(.*)"\}'/) && data.match(/"value":"(.*)"\}'/)[1]) || 'RhdnEUlBFEc8FBpAEUBoRUsaFBBrRR5BQhBtQhMRFhBpERtHFkA4FgYbHBNnHwYRCB1mEBMa'
           }
         }
       } catch (e) {
