@@ -1,6 +1,6 @@
 /*
 根据自己服务器的运行时间改定时
-默认兑换10元，export CFD_MOON_NUM="5"#兑换5元
+默认兑换5元，export CFD_MOON_NUM="5"#兑换5元
 cron 0 * * * * jd_cfdhctx.js
 */
 const $ = new Env('财富岛兑换');
@@ -8,8 +8,8 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message ='', index, nickName = '';
 let cfd_moon = process.env.CFD_MOON_NUM * 1;
-let   dwLvl=2;
-let   ddwVirHb=1000;
+let   dwLvl=3;
+let   ddwVirHb=500;
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
@@ -79,7 +79,7 @@ function taskPostUrl(){
 
 function taskUrl(cookie) {
             return {
-                "url": `https://m.jingxi.com/jxbfd/user/ExchangePearlHb?__t=1638955837437&strZone=jxbfd&dwLvl=${dwLvl}&dwIsRandHb=0&ddwVirHb=${ddwVirHb}&strPoolName=anhjZmQyX2V4Y2hhbmdlX2hjaGJfMjAyMTEyMDM=&dwExchangeType=0&_stk=__t%2CddwVirHb%2CdwExchangeType%2CdwIsRandHb%2CdwLvl%2CstrPoolName%2CstrZone&_ste=1&h5st=20211208173037464%3B4026339969767162%3B10032%3Btk01w9d5b1c0f30n7waoVresM2kzY5So1a0B%2BDTbQJOKiQMLDy8RggWETuM5C9tDmwSL3wWiTKZCtScFr2QwG4gyCplT%3Bf72e9762a29224bdb308859b516f78c7acfd74374059d3d4327ef68ff9301840&_=1638955837470&sceneval=2&g_login_type=1&callback=jsonpCBKH&g_ty=ls%0D%0A`,
+                "url": `https://m.jingxi.com/jxbfd/user/ExchangePearlHb?__t=1639281221745&strZone=jxbfd&dwLvl=${dwLvl}&dwIsRandHb=0&ddwVirHb=${ddwVirHb}&strPoolName=anhjZmQyX2V4Y2hhbmdlX2hjaGJfMjAyMTEyMDk=&dwExchangeType=0&_stk=__t%2CddwVirHb%2CdwExchangeType%2CdwIsRandHb%2CdwLvl%2CstrPoolName%2CstrZone&_ste=1&h5st=20211212115341762%3B4026339969767162%3B10032%3Btk01w95a31b5630nov6aGHIJurmuS9FhwT%2BHk%2FFDJJxDITDu4dZwHG91ebHPQo5xFbrHa0RX9I3tbk3PsdHPUKpY%2F7ZH%3Bcf5efc69d2051446605d589b7d07ed899cba32e28ddf614ced62458324d0de47&_=1639281221763&sceneval=2&g_login_type=1&callback=jsonpCBKH&g_ty=ls%0D%0A`,
                 "headers": {
                     "Host": "m.jingxi.com",
                     "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
