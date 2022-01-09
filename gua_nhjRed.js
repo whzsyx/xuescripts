@@ -35,6 +35,7 @@ newCookie = ''
 resMsg = ''
 $.endFlag = false
 let shareCodeArr = {}
+$.runArr = {}
 const activeEndTime = '2022/01/27 00:00:00+08:00';//活动结束时间
 let nowTime = new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000;
 !(async () => {
@@ -89,6 +90,7 @@ let nowTime = new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*
     if (cookie) {
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
       $.index = i + 1;
+      if($.runArr[$.UserName]) continue
       console.log(`\n\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
       await getUA()
       await run();
@@ -266,6 +268,7 @@ function showCoupon(shareId = '') {
           if(typeof res == 'object'){
             if(res.msg) console.log(res.msg)
             if(res.msg.indexOf('不展示弹层') > -1) $.again = true
+            if(res.msg.indexOf('领取上限') > -1) $.runArr[$.UserName] = true
             if(res.msg.indexOf('上限') === -1 && res.msg.indexOf('登录') === -1){
               $.flag = 1
             }
@@ -378,7 +381,7 @@ function getUrl() {
     $.get(options, async (err, resp, data) => {
       try {
         setActivityCookie(resp)
-        $.url1 = data.match(/(https:\/\/u\.jd\.com\/jda[^']+)/) && data.match(/(https:\/\/u\.jd\.com\/jda[^']+)/)[1] || ''
+        $.url1 = data && data.match(/(https:\/\/u\.jd\.com\/jda[^']+)/) && data.match(/(https:\/\/u\.jd\.com\/jda[^']+)/)[1] || ''
       } catch (e) {
         $.logErr(e, resp);
       } finally {
