@@ -141,7 +141,11 @@ async function run(type = 0){
           if(n == s) {
             $.shareCode = shareCodeArr[i] || ''
             if($.shareCode) console.log(`助力[${i}]`)
-            await getCoupons($.shareCode,1)
+            let res = await getCoupons($.shareCode,1)
+            if(res.indexOf('上限') > -1){
+              await $.wait(parseInt(Math.random() * 5000 + 3000, 10))
+              await getCoupons('',1)
+            }
           }
           n++
         }
@@ -171,8 +175,9 @@ async function run(type = 0){
 }
 function getCoupons(shareId = '',type = 1) {
   return new Promise(resolve => {
+    let message = ''
     let opts = {
-      url: `https://api.m.jd.com/api?functionId=getCoupons&appid=u&_=${Date.now()}&loginType=2&body={%22actId%22:%22${$.actId}%22,%22unionActId%22:%2231137%22,%22unpl%22:%22%22,%22platform%22:4,%22unionShareId%22:%22${$.shareCode}%22,%22d%22:%22${rebateCode}%22,%22eid%22:%22${$.eid}%22}&client=apple&clientVersion=8.3.6`,
+      url: `https://api.m.jd.com/api?functionId=getCoupons&appid=u&_=${Date.now()}&loginType=2&body={%22actId%22:%22${$.actId}%22,%22unionActId%22:%2231137%22,%22unpl%22:%22%22,%22platform%22:4,%22unionShareId%22:%22${shareId}%22,%22d%22:%22${rebateCode}%22,%22eid%22:%22${$.eid}%22}&client=apple&clientVersion=8.3.6`,
       headers: {
         "Accept-Language": "zh-cn",
         "Accept-Encoding": "gzip, deflate, br",
@@ -195,7 +200,10 @@ function getCoupons(shareId = '',type = 1) {
           }
           let res = $.toObj(data,data);
           if(typeof res == 'object'){
-            if(res.msg) console.log(res.msg)
+            if(res.msg){
+              message = res.msg
+              console.log(res.msg)
+            }
             if(res.msg.indexOf('不展示弹层') > -1) $.again = true
             if(res.msg.indexOf('上限') === -1 && res.msg.indexOf('登录') === -1){
               $.flag = 1
@@ -240,7 +248,7 @@ function getCoupons(shareId = '',type = 1) {
       } catch (e) {
         $.logErr(e, resp)
       } finally {
-        resolve();
+        resolve(message);
       }
     })
   })
