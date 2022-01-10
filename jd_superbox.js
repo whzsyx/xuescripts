@@ -1,6 +1,6 @@
 /*
 //路径 首页搜超级盒子，貌似没啥水
-cron 5 8 * * * jd_superbox.js
+
 */
 const $ = new Env('超级盒子');
 
