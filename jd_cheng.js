@@ -27,7 +27,8 @@ if ($.isNode()) {
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
 //let inviteCodes = [-ryUXP9eZmRCZ0fCGd2W8Z-gZLHxoz_l',"-ryUOOh0IxIkGmOeLaOxu5IiofZPok0","-ryUXqsNMjZCahbMQ96U_ps-6sVrFO37]
-let inviteCodes = ['-ryUXK5fMzFDZkTFTtLHpHjVYBRXv1Ds',"57eqAOtULzUPLxKIBsq14w","-ryUXqsNMjZCahbMQ96U_ps-6sVrFO37"]
+//let inviteCodes = ['-ryUXK5fMzFDZkTFTtLHpHjVYBRXv1Ds',"57eqAOtULzUPLxKIBsq14w","-ryUXqsNMjZCahbMQ96U_ps-6sVrFO37"]
+let inviteCodes = ['-ryUXq0OMDISahGVTNiXod6BgYtzmmAn',"-ryUAsR2OiIDImeRIpOiu0eZcNuzOxc","57y8DN9KMicwJHKTAJqJuwmmxhds9g"]
 $.shareCodesArr = [];
 
 !(async () => {
